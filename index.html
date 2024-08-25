@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realistic Shadow Effect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div id="text">Shadow</div> 
+   <div id="light"></div>
+   <script>
+    const text = document.getElementById('text');
+    const light = document.getElementById('light');
+
+    document.addEventListener('mousemove', function(event){
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+
+        // Position the light based on mouse position
+        light.style.left = `${mouseX}px`;
+        light.style.top = `${mouseY}px`;
+
+        // Calculate the shadow direction
+        const shadowX = (text.offsetLeft + text.offsetWidth / 2 - mouseX) / 20;
+        const shadowY = (text.offsetTop + text.offsetHeight / 2 - mouseY) / 20;
+
+        // Apply the shadow to the text
+        text.style.textShadow = `${shadowX}px ${shadowY}px 8px rgba(0, 0, 0, 1.9)`;
+    });
+   </script>
+</body>
+</html>
